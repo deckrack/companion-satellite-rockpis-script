@@ -28,7 +28,7 @@ fi
 
 # Install a specific stable build. It is advised to not use this, as attempting to install a build that doesn't
 # exist can leave your system in a broken state that needs fixing manually
-SATELLITE_BUILD="${SATELLITE_BUILD:-beta}"
+SATELLITE_BUILD="1.8.1+366-85ced69"
 # Development only: Allow building using a testing branch of this updater
 SATELLITE_BRANCH="${SATELLITE_BRANCH:-main}"
 
@@ -55,11 +55,6 @@ if [ "$SATELLITE_BRANCH" == "stable" ]; then
     SATELLITE_BRANCH=main
 fi
 
-echo "DEBUG"
-echo "$BUILD_BRANCH"
-echo "$SATELLITE_BUILD"
-echo "DEBUG"
-
 # clone the repository
 rm -R /usr/local/src/companion-satellite &>/dev/null || true
 git clone https://github.com/bitfocus/companion-satellite.git -b $SATELLITE_BRANCH /usr/local/src/companion-satellite
@@ -69,7 +64,7 @@ cd /usr/local/src/companion-satellite
 git config --global pull.rebase false
 
 # run the update script
-./pi-image/update.sh "$BUILD_BRANCH" true
+./pi-image/update.sh "$BUILD_BRANCH" "$SATELLITE_BUILD"
 
 # enable start on boot
 systemctl enable satellite
