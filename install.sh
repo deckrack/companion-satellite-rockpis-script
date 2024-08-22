@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
-fallocate -l 4G /swapfile && chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile
-mount -o remount,size=2G /tmp/
-echo "Swap Allocated OK"
+# fallocate -l 4G /swapfile && chmod 600 /swapfile && mkswap /swapfile && swapon /swapfile
+# mount -o remount,size=2G /tmp/
+# echo "Swap Allocated OK"
 
 if [ ! "$BASH_VERSION" ] ; then
     echo "You must use bash to run this script. If running this script from curl, make sure the final word is 'bash'" 1>&2
@@ -67,7 +67,7 @@ git config --global pull.rebase false
 ./pi-image/update.sh
 
 # enable start on boot
-systemctl enable satellite
+sudo systemctl enable satellite
 
 # copy config file into place
 cp ./pi-image/satellite-config /boot/satellite-config
