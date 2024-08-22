@@ -69,7 +69,7 @@ cd /usr/local/src/companion-satellite
 git config --global pull.rebase false
 
 # run the update script
-./pi-image/update.sh "$BUILD_BRANCH" false
+./pi-image/update.sh "$BUILD_BRANCH" true
 
 # enable start on boot
 systemctl enable satellite
