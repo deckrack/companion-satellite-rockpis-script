@@ -86,7 +86,11 @@ then
     exit 9999 # die with error code 9999
 fi
 
-echo "Companion Satellite is installed!"
-echo "You can edit a subset of the configuration at \"/boot/satellite-config\" then can start it with \"sudo systemctl start satellite\" or \"sudo satellite-update\""
-echo "A http server will be started on port 9999 which gives access to the full configuration"
+# echo "Companion Satellite is installed!"
+# echo "You can edit a subset of the configuration at \"/boot/satellite-config\" then can start it with \"sudo systemctl start satellite\" or \"sudo satellite-update\""
+# echo "A http server will be started on port 9999 which gives access to the full configuration"
 
+echo "==============="
+LAN_IP = "$(hostname -I | cut -d' ' -f1)";
+HOSTNAME = "$(hostname)";
+echo "Companion Satellite can be configured at http://${LAN_IP}:9999 or http://${HOSTNAME}:9999";
