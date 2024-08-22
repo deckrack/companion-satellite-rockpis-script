@@ -64,7 +64,7 @@ cd /usr/local/src/companion-satellite
 git config --global pull.rebase false
 
 # run the update script
-./pi-image/update.sh "$BUILD_BRANCH" "$SATELLITE_BUILD"
+./pi-image/update.sh "$BUILD_BRANCH"
 
 # enable start on boot
 systemctl enable satellite
@@ -75,6 +75,9 @@ cp ./pi-image/satellite-config /boot/satellite-config
 # add the fnm node to this users path
 # TODO - verify permissions
 echo "export PATH=/opt/fnm/aliases/default/bin:\$PATH" >> /home/satellite/.bashrc
+
+sudo hostnamectl hostname "streampanel"
+echo "Set hostname to \"streampanel\""
 
 # check that a build of satellite was installed
 if [ ! -d "/opt/companion-satellite" ] 
