@@ -91,6 +91,6 @@ fi
 # echo "A http server will be started on port 9999 which gives access to the full configuration"
 
 echo "==============="
-LAN_IP = "$(hostname -I | cut -d' ' -f1)";
-HOSTNAME = "$(hostname)";
+LAN_IP="$(hostname -I | cut -d' ' -f1)";
+HOSTNAME="$(hostname)";
 echo "Companion Satellite can be configured at http://${LAN_IP}:9999 or http://${HOSTNAME}:9999";
