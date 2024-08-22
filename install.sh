@@ -64,6 +64,8 @@ cd /usr/local/src/companion-satellite
 git config --global pull.rebase false
 
 # run the update script
+echo $BUILD_BRANCH
+echo $SATELLITE_BUILD
 ./pi-image/update.sh "$BUILD_BRANCH" "$SATELLITE_BUILD"
 
 # enable start on boot
