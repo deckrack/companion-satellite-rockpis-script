@@ -55,6 +55,11 @@ if [ "$SATELLITE_BRANCH" == "stable" ]; then
     SATELLITE_BRANCH=main
 fi
 
+echo "DEBUG"
+echo "$BUILD_BRANCH"
+echo "$SATELLITE_BUILD"
+echo "DEBUG"
+
 # clone the repository
 rm -R /usr/local/src/companion-satellite &>/dev/null || true
 git clone https://github.com/bitfocus/companion-satellite.git -b $SATELLITE_BRANCH /usr/local/src/companion-satellite
@@ -64,10 +69,6 @@ cd /usr/local/src/companion-satellite
 git config --global pull.rebase false
 
 # run the update script
-echo "DEBUG"
-echo "$BUILD_BRANCH"
-echo "$SATELLITE_BUILD"
-echo "DEBUG"
 ./pi-image/update.sh "$BUILD_BRANCH" "$SATELLITE_BUILD"
 
 # enable start on boot
